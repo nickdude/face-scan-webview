@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
       imageCounts[userId]++; // Increment image count for the user
       console.log(`Image ${data.index} stored for user ${userId}`);
 
-      if (imageCounts[userId] === 100) { // Check if all 900 images are received
+      if (imageCounts[userId] === 900) { // Check if all 900 images are received
         const pythonScript = 'practice.py';
         exec(`python ${pythonScript} ${fileName}`, { maxBuffer: 1024 * 1024 }, (error, stdout, stderr) => {
           if (error) {
