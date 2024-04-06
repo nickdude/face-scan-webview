@@ -101,9 +101,10 @@ const app = express();
 
 // Configure SSL/TLS
 const serverOptions = {
-  key: fs.readFileSync('private-key.pem'), // Path to your private key file
-  cert: fs.readFileSync('certificate.pem'), // Path to your certificate file
-};
+    key: fs.readFileSync(path.join(__dirname, 'private-key.pem')), // Relative path to your private key file
+    cert: fs.readFileSync(path.join(__dirname, 'certificate.pem')), // Relative path to your certificate file
+  };
+  
 
 const server = https.createServer(serverOptions, app);
 const io = socketIo(server);
