@@ -92,6 +92,7 @@
 
 const express = require('express');
 const https = require('https');
+//const http = require('http');
 const socketIo = require('socket.io');
 const fs = require('fs');
 const { exec } = require('child_process');
@@ -99,14 +100,16 @@ const path = require('path');
 
 const app = express();
 
-// Configure SSL/TLS
+//Configure SSL/TLS
 const serverOptions = {
-    key: fs.readFileSync('/etc/letsencrypt/archive/face-scan-web.actofit.com/privkey1.pem'), // Full path to your private key file
-    cert: fs.readFileSync('/etc/letsencrypt/archive/face-scan-web.actofit.com/cert1.pem'), // Full path to your certificate file
+    key: fs.readFileSync('/etc/letsencrypt/live/face-scan-web.actofit.com/privkey.pem'), // Full path to your private key file
+    cert: fs.readFileSync('/etc/letsencrypt/live/face-scan-web.actofit.com/cert.pem'), // Full path to your certificate file
 };
   
 
 const server = https.createServer(serverOptions, app);
+
+//const server = http.createServer(app);
 const io = socketIo(server);
 
 const imageCounts = {}; // Object to track image counts for each user
