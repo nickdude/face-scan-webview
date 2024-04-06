@@ -68,7 +68,6 @@
 //   console.log(`Server running on port ${PORT}`);
 // });
 
-
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -112,7 +111,8 @@ io.on('connection', (socket) => {
 
       if (imageCounts[userId] === 900) { // Check if all 900 images are received
         const pythonScript = 'practice.py';
-        exec(`python ${pythonScript} ${fileName}`, { maxBuffer: 1024 * 1024 * 10 }, (error, stdout, stderr) => {
+        const pythonPath = '/usr/bin/python3.8'; // Specify the full path to Python 3.8 executable
+        exec(`${pythonPath} ${pythonScript} ${fileName}`, { maxBuffer: 1024 * 1024 * 10 }, (error, stdout, stderr) => {
           if (error) {
             console.error(`Error executing ${pythonScript}: ${error}`);
             return;
