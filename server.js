@@ -101,9 +101,9 @@ const app = express();
 
 // Configure SSL/TLS
 const serverOptions = {
-    key: fs.readFileSync('/etc/letsencrypt/live/face-scan-web.actofit.com/private-key.pem'), // Relative path to your private key file
-    cert: fs.readFileSync('/etc/letsencrypt/live/face-scan-web.actofit.com/cert.pem'), // Relative path to your certificate file
-  };
+    key: fs.readFileSync('/etc/letsencrypt/archive/face-scan-web.actofit.com/privkey1.pem'), // Full path to your private key file
+    cert: fs.readFileSync('/etc/letsencrypt/archive/face-scan-web.actofit.com/cert1.pem'), // Full path to your certificate file
+};
   
 
 const server = https.createServer(serverOptions, app);
