@@ -101,8 +101,8 @@ const app = express();
 
 // Configure SSL/TLS
 const serverOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'private-key.pem')), // Relative path to your private key file
-    cert: fs.readFileSync(path.join(__dirname, 'certificate.pem')), // Relative path to your certificate file
+    key: fs.readFileSync('/etc/letsencrypt/live/face-scan-web.actofit.com/private-key.pem'), // Relative path to your private key file
+    cert: fs.readFileSync('/etc/letsencrypt/live/face-scan-web.actofit.com/cert.pem'), // Relative path to your certificate file
   };
   
 
@@ -178,4 +178,3 @@ const PORT = 4000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
